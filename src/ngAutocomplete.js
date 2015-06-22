@@ -145,6 +145,7 @@ function ngAutocomplete() {
                         })
 
                       });
+                      scope.onPlaceChanged();
                     }
                   }
                 );
