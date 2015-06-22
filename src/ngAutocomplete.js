@@ -132,17 +132,15 @@ function ngAutocomplete() {
 
                     if (placesServiceStatus == google.maps.GeocoderStatus.OK) {
                       scope.$apply(function () {
+                        //a hack to make sure the input value doesn't get reverted
+                        element.trigger('blur');
 
                         controller.$setViewValue(detailsResult.formatted_address);
                         element.val(detailsResult.formatted_address);
 
                         scope.details = detailsResult;
-
-                        //on focusout the value reverts, need to set it again.
-                        var watchFocusOut = element.on('focusout', function (event) {
-                          element.val(detailsResult.formatted_address);
-                          element.unbind('focusout')
-                        })
+                        //put focus back, end of hack
+                        element.trigger('focus');
 
                       });
                       scope.onPlaceChanged();
