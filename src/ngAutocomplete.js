@@ -108,7 +108,7 @@ function ngAutocomplete() {
         }
       });
 
-      //function to get retrieve the autocompletes first result using the AutocompleteService
+      //function to retrieve the autocompletes first result using the AutocompleteService
       var getPlace = function (result) {
         var autocompleteService = new google.maps.places.AutocompleteService();
         if (result.name.length > 0) {
