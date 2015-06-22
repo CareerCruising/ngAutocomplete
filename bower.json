@@ -4,5 +4,10 @@
   "main": "src/ngAutocomplete.js",
   "dependencies": {
     "angular": ">=1.2.0"
-  }
+  },
+  "homepage": "https://github.com/CareerCruising/ngAutocomplete",
+  "authors": [
+    "Will Palahnuk",
+    "Andrey Tabachnik"
+  ]
 }
