@@ -1,6 +1,6 @@
 {
   "name": "cc-ngAutocomplete",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "src/ngAutocomplete.js",
   "dependencies": {
     "angular": ">=1.2.0"
