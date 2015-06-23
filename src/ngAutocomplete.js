@@ -94,11 +94,11 @@ function ngAutocomplete($timeout) {
             scope.$apply(function () {
 
               scope.details = result;
-
               controller.$setViewValue(element.val());
 
-              scope.onPlaceChanged();
             });
+
+            scope.onPlaceChanged();
           }
           else {
             if (watchEnter) {
