@@ -30,7 +30,7 @@
 angular.module("ngAutocomplete", [])
   .directive('ngAutocomplete', ngAutocomplete);
 
-function ngAutocomplete() {
+function ngAutocomplete($timeout) {
   var directive = {
     require: 'ngModel',
     scope: {
@@ -132,15 +132,18 @@ function ngAutocomplete() {
 
                     if (placesServiceStatus == google.maps.GeocoderStatus.OK) {
                       scope.$apply(function () {
-                        //a hack to make sure the input value doesn't get reverted
-                        element.trigger('blur');
 
                         controller.$setViewValue(detailsResult.formatted_address);
                         element.val(detailsResult.formatted_address);
 
                         scope.details = detailsResult;
-                        //put focus back, end of hack
-                        element.trigger('focus');
+                        //on focusout the value reverts, need to set it again.
+                        element.on('focusout', function (event) {
+                          $timeout(function () {
+                            element.val(detailsResult.formatted_address);
+                            element.unbind('focusout')
+                          });
+                        })
 
                       });
                       scope.onPlaceChanged();
