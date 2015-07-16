@@ -42,6 +42,17 @@ function ngAutocomplete($timeout) {
 
     link: function (scope, element, attrs, controller) {
 
+      //handle custom scroll
+      var currentPos;
+      var scroller = angular.element('[class*="scroller"]');
+
+      if (scroller) {
+        scroller.on('scroll', function () {
+          currentPos = element.offset().top + 34;
+          angular.element('.pac-container').css({top: currentPos + 'px'});
+        })
+      }
+
       //options for autocomplete
       var opts;
       var watchEnter = false;
