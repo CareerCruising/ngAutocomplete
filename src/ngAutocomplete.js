@@ -29,7 +29,7 @@
 
 angular.module("ngAutocomplete", [])
   .directive('ngAutocomplete', ngAutocomplete);
-
+ngAutocomplete.$inject = ['$timeout'];
 function ngAutocomplete($timeout) {
   var directive = {
     require: 'ngModel',
