@@ -104,6 +104,15 @@ function ngAutocomplete($timeout) {
       }
       google.maps.event.addListener(scope.gPlace, 'place_changed', function () {
         var result = scope.gPlace.getPlace();
+
+        if(window && (window).heap) {
+          (window).heap.track( 'PlacesAPIProfile', {
+              detail: result && result.formatted_address ? result.formatted_address : '', 
+              event: 'gl' + 'ngAutocompletegetPlace'
+          } );
+        }
+
+
         if (result !== undefined) {
           if (result.address_components !== undefined) {
 
